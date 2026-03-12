@@ -32,15 +32,16 @@
 </head>
 <body>
 
-<div class="sidebar">
+    <div class="sidebar">
         <div class="logo">ADMIN <span>PANEL</span></div>
-        <a href="index.php?controller=admin&action=dashboard"><i class="fas fa-tachometer-alt"></i> Tổng quan</a>
-        <a href="index.php?controller=admin&action=create_post" class="active"><i class="fas fa-pen"></i> Viết bài mới</a>
+        <a href="index.php?controller=admin&action=dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Tổng quan (Dashboard)</a>
+        <a href="index.php?controller=admin&action=create_post"><i class="fas fa-pen"></i> Viết bài mới</a>
         <a href="index.php?controller=admin&action=list_posts"><i class="fas fa-list"></i> Danh sách bài viết</a>
-        <a href="index.php?controller=admin&action=users"><i class="fas fa-users"></i> Quản lý Người dùng</a>
-        <a href="index.php?controller=admin&action=banners"><i class="fas fa-ad"></i>  Quản lý Banner Quảng cáo</a>
-
-                <div style="margin-top: auto;">
+        <?php if($role === 'admin'): ?>
+            <a href="index.php?controller=admin&action=users"><i class="fas fa-users"></i> Quản lý Người dùng</a>
+            <a href="index.php?controller=admin&action=banners"><i class="fas fa-ad"></i> Quản lý Banner Quảng cáo</a>
+        <?php endif; ?>
+        <div style="margin-top: auto;">
             <a href="index.php" target="_blank"><i class="fas fa-external-link-alt"></i> Ra ngoài Trang chủ</a>
             <a href="index.php?controller=logout" style="color: #e74c3c;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
         </div>
