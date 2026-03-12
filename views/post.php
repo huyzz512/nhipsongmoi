@@ -26,9 +26,17 @@
     <div class="content-left">
         <h1 style="font-size: 3rem; margin-bottom: 20px; color: #333; line-height: 1.2; font-weight: 800;"><?= htmlspecialchars($post['title']) ?></h1>
         <div class="meta" style="color: #666; font-size: 0.95rem; margin-bottom: 15px; display: flex; gap: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-            <span><i class="fas fa-user" style="margin-right: 5px;"></i> Admin</span>
-            <span><i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> 19:42 - 02/03/2026</span>
-            <span><i class="fas fa-eye" style="margin-right: 5px;"></i> 0 lượt xem</span>
+            <span><i class="fas fa-user" style="margin-right: 5px;"></i> <?= htmlspecialchars($post['username'] ?? 'Admin') ?></span>
+
+            <span>
+              <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> 
+              <?= date('H:i - d/m/Y', strtotime($post['published_at'] ?? $post['created_at'])) ?>
+            </span>
+    
+            <span>
+              <i class="fas fa-eye" style="margin-right: 5px;"></i> 
+              <?= number_format($post['view_count'] + 1) ?> lượt xem
+            </span>
         </div>
         
         <button style="background: #eee; border: none; color: #333; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; margin-bottom: 30px;">
@@ -46,32 +54,16 @@
     </div>
 
     <aside class="sidebar-right">
-        <div class="widget" style="background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 30px;">
-            <h3 style="color: #333; text-transform: uppercase; font-size: 1.3rem; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 12px; font-weight: 800;">ĐỌC NHIỀU NHẤT</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <span style="font-size: 1.3rem; color: #b71c1c; font-weight: bold;">1</span>
-                    <div>
-                        <p style="margin: 0; font-weight: bold; line-height: 1.4; color: #333;">Giá vàng SJC tăng sốc 14 triệu đồng/lượng: Cú "quay xe" lịch sử</p>
-                        <small style="color: #888;">0 lượt xem</small>
-                    </div>
+        <div class="widget">
+            <div class="widget-header"><h3>Đọc nhiều nhất</h3></div>
+            <ul class="ranking-list">
+                <?php $i=1; foreach($mostViewed as $mv): ?>
+                <li>
+                    <span class="rank-num top-<?= $i ?>"><?= $i ?></span>
+                    <a href="index.php?controller=post&slug=<?= $mv['slug'] ?>"><?= htmlspecialchars($mv['title']) ?></a>
                 </li>
-                <li style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <span style="font-size: 1.3rem; color: #b71c1c; font-weight: bold;">2</span>
-                    <div>
-                        <p style="margin: 0; font-weight: bold; line-height: 1.4; color: #333;">Lisa (BlackPink) lộ video đi vào khách sạn cùng con trai tỷ phú</p>
-                        <small style="color: #888;">0 lượt xem</small>
-                    </div>
-                </li>
-                <li style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <span style="font-size: 1.3rem; color: #b71c1c; font-weight: bold;">3</span>
-                    <div>
-                        <p style="margin: 0; font-weight: bold; line-height: 1.4; color: #333;">Vụ án Shark Thủy: Thông báo mới nhất từ C03 Bộ Công an</p>
-                        <small style="color: #888;">0 lượt xem</small>
-                    </div>
-                </li>
+                <?php $i++; endforeach; ?>
             </ul>
-        </div>
     </aside>
 </main>
 

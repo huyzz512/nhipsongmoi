@@ -18,18 +18,25 @@ class PostController {
             exit;
         }
 
-        $is_preview = false;
+        // 2.1. Xác định QYỀN: User này có được phép xem bài chưa duyệt không?
+        $can_preview = false;
         if (isset($_SESSION['role']) && ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'bien_tap_vien')) {
-            $is_preview = true;
+            $can_preview = true;
         }
 
-        // 2. Lấy dữ liệu chi tiết bài viết
-        $post = $postModel->getPostBySlug($slug, $is_preview);
+        // 2.2. Lấy dữ liệu chi tiết bài viết (Truyền quyền $can_preview vào Model)
+        $post = $postModel->getPostBySlug($slug, $can_preview);
 
         if (!$post) {
-            // Nếu không tìm thấy bài viết (slug sai hoặc bài bị ẩn)
+            // Nếu không tìm thấy bài viết (slug sai hoặc bài bị ẩn đối với user thường)
             echo "<h2 style='text-align:center; margin-top:50px;'>404 - Bài viết không tồn tại hoặc chưa được xuất bản!</h2>";
             exit;
+        }
+
+        // 2.3.Chỉ bật thanh cảnh báo ($is_preview) nếu bài viết thực sự CHƯA được xuất bản
+        $is_preview = false;
+        if ($can_preview && $post['status'] !== 'published') {
+            $is_preview = true;
         }
 
         // 3. Tăng lượt xem cho bài viết này

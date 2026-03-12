@@ -64,24 +64,33 @@ $sql = "SELECT p.*, c.name as cat_name FROM posts p
     }
 
 // Lấy chi tiết bài viết theo Slug (Đã cấp quyền Xem Thử cho Admin)
-    public function getPostBySlug($slug, $is_preview = false) {
-        $sql = "SELECT p.*, c.name as cat_name, c.slug as cat_slug, u.username as author_name 
-                FROM posts p 
-                LEFT JOIN categories c ON p.category_id = c.id 
-                LEFT JOIN users u ON p.user_id = u.id 
-                WHERE p.slug = :slug";
-        
-        // Nếu Độc giả bình thường vào xem -> Bắt buộc bài phải Đã Xuất Bản
-        // Nếu Admin/Biên tập viên vào xem -> Bỏ qua dòng kiểm tra này (Xem được cả bài nháp)
-        if (!$is_preview) {
-            $sql .= " AND p.status = 'published'";
-        }
-        
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(':slug', $slug, PDO::PARAM_STR);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+    public function getPostBySlug($slug, $can_preview = false) {
+    // 1. KHÔNG DÙNG SELECT * // Chỉ lấy đúng những cột cần hiển thị ra View để tiết kiệm RAM và Băng thông
+    $sql = "SELECT 
+                p.id, p.title, p.slug, p.summary, p.content, p.thumbnail, 
+                p.view_count, p.published_at, p.created_at, p.status,
+                u.username, u.avatar, 
+                c.name AS category_name, c.slug AS cat_slug
+            FROM posts p
+            INNER JOIN users u ON p.user_id = u.id
+            INNER JOIN categories c ON p.category_id = c.id
+            WHERE p.slug = :slug";
+
+    // 2. Chặn bài ẩn ngay từ Database (Nhanh hơn là lấy ra PHP rồi mới if/else)
+    if (!$can_preview) {
+        $sql .= " AND p.status = 'published'";
     }
+
+    // Tùy chọn: Thêm LIMIT 1 để Database ngừng tìm kiếm ngay khi thấy kết quả đầu tiên
+    $sql .= " LIMIT 1";
+
+    // 3. Thực thi truy vấn an toàn bằng PDO (Chống SQL Injection)
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+    $stmt->execute();
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 
     // Tăng lượt xem (view_count) lên 1 đơn vị
     public function incrementViewCount($id) {

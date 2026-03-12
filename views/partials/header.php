@@ -12,7 +12,7 @@
         <div class="container header-flex">
             <div class="header-left">
                 <a href="index.php" class="logo">
-                    <h2>NHỊP SỐNG<span>MỚI</span></h2>
+                    <h2>NHỊP SỐNG<span> MỚI</span></h2>
                 </a>
                 <div class="meta-info">
                     <span id="current-date"></span> |
