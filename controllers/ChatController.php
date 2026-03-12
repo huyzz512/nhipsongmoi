@@ -15,7 +15,7 @@ class ChatController {
         }
 
         // paste api vào đây
-        $apiKey = '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';
+        $apiKey = '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';
 
 
         $url = 'https://openrouter.ai/api/v1/chat/completions';
@@ -24,7 +24,7 @@ class ChatController {
 
 $data = [
             // Lưu ý tên model
-            "model" => "bytedance-seed/seed-2.0-mini",
+            "model" => "nvidia/nemotron-3-super-120b-a12b:free",
             "messages" => [
                 ["role" => "system", "content" => $systemInstruction],
                 ["role" => "user", "content" => $userMessage]
@@ -36,7 +36,7 @@ $data = [
                 'header'  => "Content-Type: application/json\r\n" .
                              "Authorization: Bearer " . $apiKey . "\r\n" .
                              "HTTP-Referer: http://localhost\r\n" .
-                             "X-Title: VDPR Newspaper\r\n",
+                             "X-Title: Nhịp Sống Mới\r\n",
                 'method'  => 'POST',
                 'content' => json_encode($data),
                 'ignore_errors' => true
