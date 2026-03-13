@@ -18,7 +18,7 @@
                 <div class="meta-info">
                     <span id="current-date"></span> |
                     <span id="user-location"><i class="fas fa-map-marker-alt"></i> Hà Nội</span> |
-                    <span id="weather-info"><i class="fas fa-cloud-sun"></i> 26°C</span>
+                    <span id="live-weather"><i class="fas fa-spinner fa-spin"></i> Đang cập nhật...</span>
                 </div>
             </div>
             <div class="header-right" style="display:flex; align-items:center; gap: 15px;">
@@ -73,3 +73,6 @@
             </ul>
         </div>
     </nav>
+<script src="public/js/weather.js"></script>
+
+</body>    
