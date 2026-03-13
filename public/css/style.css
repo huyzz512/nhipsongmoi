@@ -1,163 +1,587 @@
 /* ==========================================================================
    1. RESET & BIẾN MẶC ĐỊNH
    ========================================================================== */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background-color: #f4f6f8; 
-    color: #333; 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
     line-height: 1.6;
 }
-a { text-decoration: none; color: inherit; transition: color 0.2s; }
-a:hover { color: #b71c1c; } /* Màu đỏ chủ đạo khi hover link */
-ul { list-style: none; }
-img { max-width: 100%; height: auto; display: block; }
 
-.container { 
-    width: 1200px; 
-    max-width: 100%; 
-    margin: 0 auto; 
-    padding: 0 15px; 
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #b71c1c;
+}
+
+/* Màu đỏ chủ đạo khi hover link */
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 /* ==========================================================================
    2. HEADER & NAVIGATION
    ========================================================================== */
-.top-header { background: #fff; padding: 15px 0; border-bottom: 1px solid #ddd; }
-.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.top-header {
+    background: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
 
-.header-left { display: flex; align-items: center; gap: 20px; }
-.logo h2 { color: #b71c1c; font-weight: 900; font-size: 28px; letter-spacing: 1px; margin: 0;}
-.logo span { color: #333; }
-.meta-info { font-size: 0.85rem; color: #666; }
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.header-right { display: flex; gap: 20px; align-items: center; }
-.search-box { display: flex; border: 1px solid #ccc; border-radius: 20px; overflow: hidden; }
-.search-box input { border: none; padding: 8px 15px; outline: none; width: 200px; }
-.search-box button { background: #fff; border: none; padding: 0 12px; cursor: pointer; color: #666; }
-.search-box button:hover { color: #b71c1c; }
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo h2 {
+    color: #b71c1c;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.logo span {
+    color: #333;
+}
+
+.meta-info {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.search-box {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.search-box input {
+    border: none;
+    padding: 8px 15px;
+    outline: none;
+    width: 200px;
+}
+
+.search-box button {
+    background: #fff;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    color: #666;
+}
+
+.search-box button:hover {
+    color: #b71c1c;
+}
 
 /* User Dropdown */
-.user-area { position: relative; cursor: pointer; display: flex; align-items: center; }
-.avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #eee; }
-.dropdown-menu { 
-    display: none; position: absolute; right: 0; top: 50px; 
-    background: #fff; width: 200px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-    z-index: 1000; border-radius: 5px; border: 1px solid #eee;
+.user-area {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
-.dropdown-menu.show { display: block; animation: fadeIn 0.2s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.user-info { padding: 12px 15px; background: #f9f9f9; border-bottom: 1px solid #eee; border-radius: 5px 5px 0 0;}
-.dropdown-menu a { display: block; padding: 10px 15px; font-size: 0.95rem; }
-.dropdown-menu a i { width: 20px; text-align: center; margin-right: 8px; color: #666;}
-.dropdown-menu hr { border: 0; height: 1px; background: #eee; margin: 0; }
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: #fff;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.dropdown-menu.show {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-info {
+    padding: 12px 15px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    border-radius: 5px 5px 0 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+}
+
+.dropdown-menu a i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+    color: #666;
+}
+
+.dropdown-menu hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 0;
+}
 
 /* Main Nav */
-.main-nav { background: #b71c1c; position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.main-nav ul { display: flex; flex-wrap: wrap; }
-.main-nav a { display: block; padding: 14px 20px; color: #fff; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; }
-.main-nav a:hover { background: #8f1515; color: #fff; }
+.main-nav {
+    background: #b71c1c;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    display: block;
+    padding: 14px 20px;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.main-nav a:hover {
+    background: #8f1515;
+    color: #fff;
+}
 
 /* ==========================================================================
    3. LAYOUT CHÍNH (BODY)
    ========================================================================== */
-.main-body { display: flex; margin-top: 25px; margin-bottom: 40px; gap: 30px; align-items: flex-start; }
-.content-left { width: 70%; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-.sidebar-right { width: 30%; position: sticky; top: 70px; /* Sidebar trượt theo màn hình */ }
+.main-body {
+    display: flex;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.content-left {
+    width: 70%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-right {
+    width: 30%;
+    position: sticky;
+    top: 70px;
+    /* Sidebar trượt theo màn hình */
+}
 
 /* ==========================================================================
    4. TIN NỔI BẬT (HERO SECTION)
    ========================================================================== */
-.hot-news-section { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-.hero-post { position: relative; margin-bottom: 20px; }
-.hero-post .img-wrap { position: relative; border-radius: 6px; overflow: hidden; }
-.hero-post img { width: 100%; height: 400px; object-fit: cover; transition: transform 0.3s; }
-.hero-post:hover img { transform: scale(1.02); }
-.hero-post .badge { position: absolute; top: 15px; left: 15px; background: #b71c1c; color: #fff; padding: 5px 10px; font-size: 0.8rem; font-weight: bold; border-radius: 3px; text-transform: uppercase; }
-.hero-info { padding-top: 15px; }
-.hero-info h2 { font-size: 1.8rem; margin-bottom: 10px; line-height: 1.3; }
-.hero-info p { font-size: 1rem; color: #555; }
+.hot-news-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
 
-.sub-hero-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.sub-item img { width: 100%; height: 140px; object-fit: cover; border-radius: 4px; margin-bottom: 10px; }
-.sub-item h3 { font-size: 1rem; line-height: 1.4; font-weight: 600; }
+.hero-post {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.hero-post .img-wrap {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.hero-post img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.hero-post:hover img {
+    transform: scale(1.02);
+}
+
+.hero-post .badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #b71c1c;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.hero-info {
+    padding-top: 15px;
+}
+
+.hero-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.hero-info p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.sub-hero-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.sub-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.sub-item h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 600;
+}
 
 /* ==========================================================================
    5. DANH SÁCH TIN THEO CHỦ ĐỀ
    ========================================================================== */
-.block-title { border-bottom: 2px solid #b71c1c; margin-bottom: 20px; }
-.block-title h3 { background: #b71c1c; display: inline-block; padding: 8px 15px; text-transform: uppercase; font-size: 1rem; margin-bottom: -2px; }
-.block-title h3 a { color: #fff; }
+.block-title {
+    border-bottom: 2px solid #b71c1c;
+    margin-bottom: 20px;
+}
 
-.news-row { display: flex; gap: 20px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-.news-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.news-row img { width: 240px; height: 150px; object-fit: cover; border-radius: 4px; }
-.news-row .desc { flex: 1; }
-.news-row h4 { font-size: 1.3rem; margin-bottom: 8px; line-height: 1.3; }
-.news-row .meta { font-size: 0.85rem; color: #999; margin-bottom: 10px; }
+.block-title h3 {
+    background: #b71c1c;
+    display: inline-block;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-bottom: -2px;
+}
+
+.block-title h3 a {
+    color: #fff;
+}
+
+.news-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.news-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.news-row img {
+    width: 240px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.news-row .desc {
+    flex: 1;
+}
+
+.news-row h4 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.news-row .meta {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
 /* Giới hạn text hiển thị 3 dòng (Line Clamp) */
-.news-row p { font-size: 0.95rem; color: #555; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.news-row p {
+    font-size: 0.95rem;
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
 /* ==========================================================================
    6. SIDEBAR (CỘT PHẢI)
    ========================================================================== */
-.widget { background: #fff; padding: 20px; margin-bottom: 25px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-.widget-header { border-bottom: 2px solid #eee; margin-bottom: 15px; padding-bottom: 10px; font-weight: bold; text-transform: uppercase; font-size: 1.1rem; }
+.widget {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.widget-header {
+    border-bottom: 2px solid #eee;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
 
 /* Danh sách xem nhiều */
-.ranking-list li { display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start; border-bottom: 1px dashed #eee; padding-bottom: 15px; }
-.ranking-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.rank-num { font-size: 1.5rem; font-weight: 900; color: #ccc; width: 25px; text-align: center; line-height: 1; }
-.rank-num.top-1 { color: #d32f2f; font-size: 1.8rem; }
-.rank-num.top-2 { color: #f57c00; font-size: 1.6rem; }
-.rank-num.top-3 { color: #388e3c; }
-.ranking-list a { font-weight: 600; font-size: 0.95rem; line-height: 1.4; }
+.ranking-list li {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 15px;
+}
+
+.ranking-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.rank-num {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ccc;
+    width: 25px;
+    text-align: center;
+    line-height: 1;
+}
+
+.rank-num.top-1 {
+    color: #d32f2f;
+    font-size: 1.8rem;
+}
+
+.rank-num.top-2 {
+    color: #f57c00;
+    font-size: 1.6rem;
+}
+
+.rank-num.top-3 {
+    color: #388e3c;
+}
+
+.ranking-list a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
 
 /* Banner Ads */
-.widget.ads { padding: 15px; background: transparent; box-shadow: none; }
-.widget.ads img { transition: opacity 0.3s; }
-.widget.ads img:hover { opacity: 0.9; }
+.widget.ads {
+    padding: 15px;
+    background: transparent;
+    box-shadow: none;
+}
+
+.widget.ads img {
+    transition: opacity 0.3s;
+}
+
+.widget.ads img:hover {
+    opacity: 0.9;
+}
 
 /* ==========================================================================
    7. FOOTER
    ========================================================================== */
-footer { background: #1a1a1a; color: #aaa; padding: 50px 0 0; margin-top: 50px; }
-.footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding-bottom: 40px; border-bottom: 1px solid #333; }
-.footer-grid h3 { color: #fff; margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 1px; }
-.footer-grid p { margin-bottom: 10px; }
-.footer-grid i { width: 25px; color: #b71c1c; }
-.copyright { padding: 20px 0; text-align: center; font-size: 0.9rem; background: #111; color: #888; }
+footer {
+    background: #1a1a1a;
+    color: #aaa;
+    padding: 50px 0 0;
+    margin-top: 50px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333;
+}
+
+.footer-grid h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.footer-grid p {
+    margin-bottom: 10px;
+}
+
+.footer-grid i {
+    width: 25px;
+    color: #b71c1c;
+}
+
+.copyright {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    background: #111;
+    color: #888;
+}
 
 /* ==========================================================================
    8. RESPONSIVE (MÀN HÌNH NHỎ)
    ========================================================================== */
 @media (max-width: 992px) {
-    .main-body { flex-direction: column; }
-    .content-left, .sidebar-right { width: 100%; }
-    .news-row img { width: 200px; height: 130px; }
-    .hero-post img { height: 300px; }
+    .main-body {
+        flex-direction: column;
+    }
+
+    .content-left,
+    .sidebar-right {
+        width: 100%;
+    }
+
+    .news-row img {
+        width: 200px;
+        height: 130px;
+    }
+
+    .hero-post img {
+        height: 300px;
+    }
 }
+
 @media (max-width: 768px) {
-    .sub-hero-grid { grid-template-columns: 1fr; }
-    .news-row { flex-direction: column; }
-    .news-row img { width: 100%; height: auto; }
-    .header-right { display: none; /* Tạm ẩn tìm kiếm trên mobile để gọn */ }
+    .sub-hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-row {
+        flex-direction: column;
+    }
+
+    .news-row img {
+        width: 100%;
+        height: auto;
+    }
+
+    .header-right {
+        display: none;
+        /* Tạm ẩn tìm kiếm trên mobile để gọn */
+    }
 }
 
 /* ==========================================================================
    9. ARTICLE DETAIL (TRANG CHI TIẾT BÀI VIẾT)
    ========================================================================== */
-.article-content { margin-bottom: 30px; }
-.article-content p { margin-bottom: 15px; }
-.article-content img { 
-    max-width: 100%; /* Ép ảnh không được to hơn khung bài viết */
-    height: auto; 
-    display: block; 
-    margin: 20px auto; 
-    border-radius: 5px; 
+.article-content {
+    margin-bottom: 30px;
 }
-.article-content h2, .article-content h3 { margin: 20px 0 10px 0; line-height: 1.4; }
-.breadcrumb a:hover { color: #b71c1c; text-decoration: underline; }
+
+.article-content p {
+    margin-bottom: 15px;
+}
+
+.article-content img {
+    max-width: 100%;
+    /* Ép ảnh không được to hơn khung bài viết */
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.article-content h2,
+.article-content h3 {
+    margin: 20px 0 10px 0;
+    line-height: 1.4;
+}
+
+.breadcrumb a:hover {
+    color: #b71c1c;
+    text-decoration: underline;
+}
 
 /* ==========================================================================
    10. NÚT SCROLL TO TOP
@@ -171,16 +595,18 @@ footer { background: #1a1a1a; color: #aaa; padding: 50px 0 0; margin-top: 50px; 
     height: 45px;
     border: none;
     outline: none;
-    background-color: #b71c1c; /* Màu đỏ chủ đạo */
+    background-color: #b71c1c;
+    /* Màu đỏ chủ đạo */
     color: white;
     cursor: pointer;
-    border-radius: 50%; /* Bo tròn thành hình tròn */
+    border-radius: 50%;
+    /* Bo tròn thành hình tròn */
     font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     /* Hiệu ứng ẩn hiện mượt mà */
     opacity: 0;
     visibility: hidden;
@@ -198,53 +624,100 @@ footer { background: #1a1a1a; color: #aaa; padding: 50px 0 0; margin-top: 50px; 
 /* Hiệu ứng khi hover chuột vào nút */
 #scrollToTopBtn:hover {
     background-color: #8f1515;
-    transform: translateY(-3px); /* Nảy lên một chút cho sinh động */
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transform: translateY(-3px);
+    /* Nảy lên một chút cho sinh động */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 /*==========================================================================
    11. CHẾ ĐỘ TỐI (DARK MODE)
    ========================================================================== */
-body.dark-mode { background-color: #121212; color: #e0e0e0; }
-
-body.dark-mode .top-header, 
-body.dark-mode .content-left, 
-body.dark-mode .widget,
-body.dark-mode .dropdown-menu { 
-    background-color: #1e1e1e; border-color: #333; box-shadow: none; 
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
-body.dark-mode .header-left .logo h2 span { color: #e0e0e0; }
-body.dark-mode .meta-info, body.dark-mode .meta, body.dark-mode p { color: #aaa; }
-body.dark-mode a { color: #e0e0e0; }
-body.dark-mode a:hover { color: #b71c1c; }
-body.dark-mode .news-row { border-color: #333; }
-body.dark-mode .ranking-list li { border-color: #333; }
+body.dark-mode .top-header,
+body.dark-mode .content-left,
+body.dark-mode .widget,
+body.dark-mode .dropdown-menu {
+    background-color: #1e1e1e;
+    border-color: #333;
+    box-shadow: none;
+}
+
+body.dark-mode .header-left .logo h2 span {
+    color: #e0e0e0;
+}
+
+body.dark-mode .meta-info,
+body.dark-mode .meta,
+body.dark-mode p {
+    color: #aaa;
+}
+
+body.dark-mode a {
+    color: #e0e0e0;
+}
+
+body.dark-mode a:hover {
+    color: #b71c1c;
+}
+
+body.dark-mode .news-row {
+    border-color: #333;
+}
+
+body.dark-mode .ranking-list li {
+    border-color: #333;
+}
 
 /* Làm tối ô tìm kiếm và các input */
-body.dark-mode input { background-color: #333; color: #fff; border-color: #444; }
-body.dark-mode .search-box button { background-color: #333; color: #aaa; }
+body.dark-mode input {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+body.dark-mode .search-box button {
+    background-color: #333;
+    color: #aaa;
+}
 
 /* Bọc mờ ảnh một chút cho đỡ chói mắt ban đêm */
-body.dark-mode img { filter: brightness(.8) contrast(1.2); }
+body.dark-mode img {
+    filter: brightness(.8) contrast(1.2);
+}
 
 /* Đổi màu Nút Xem Thêm trong Dark Mode */
-body.dark-mode #loadMoreBtn { background: #1e1e1e; color: #ff5252; border-color: #ff5252; }
+body.dark-mode #loadMoreBtn {
+    background: #1e1e1e;
+    color: #ff5252;
+    border-color: #ff5252;
+}
 
 /* ==========================================================================
    12. HIỆU ỨNG CHUYỂN MƯỢT MÀ (DÀNH CHO DARK MODE)
    ========================================================================== */
 /* Khai báo chuyển đổi từ từ cho màu nền, màu chữ và viền trong 0.4 giây */
-body, 
-.top-header, 
-.content-left, 
-.widget, 
-.dropdown-menu, 
-.news-row, 
-.ranking-list li, 
-input, 
-button, 
-a, p, span, h1, h2, h3, h4, h5, h6 {
+body,
+.top-header,
+.content-left,
+.widget,
+.dropdown-menu,
+.news-row,
+.ranking-list li,
+input,
+button,
+a,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -252,19 +725,23 @@ a, p, span, h1, h2, h3, h4, h5, h6 {
 img {
     transition: filter 0.4s ease, transform 0.3s ease;
 }
+
 /* Sửa lỗi nền trắng chữ trắng ở Dropdown Menu trong Dark Mode */
 body.dark-mode .user-info {
-    background-color: #2a2a2a; /* Màu nền tối cho phần xin chào */
+    background-color: #2a2a2a;
+    /* Màu nền tối cho phần xin chào */
     border-bottom: 1px solid #444;
     color: #e0e0e0;
 }
 
 body.dark-mode .user-info strong {
-    color: #fff; /* Làm nổi bật tên người dùng */
+    color: #fff;
+    /* Làm nổi bật tên người dùng */
 }
 
 body.dark-mode .dropdown-menu hr {
-    background-color: #444; /* Làm tối lại đường kẻ ngang */
+    background-color: #444;
+    /* Làm tối lại đường kẻ ngang */
 }
 
 /* Đảm bảo các icon trong dropdown cũng hiển thị rõ */
@@ -282,7 +759,12 @@ html {
 }
 
 /* 2. Hiệu ứng chuyển đổi Sáng/Tối mượt mà (Không bị giật chớp) */
-body, header, footer, .main-content, .widget, .post-content {
+body,
+header,
+footer,
+.main-content,
+.widget,
+.post-content {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -292,12 +774,15 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Đổ bóng nhẹ cho menu nổi lên */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Đổ bóng nhẹ cho menu nổi lên */
 }
 
 /* 4. Hiệu ứng Zoom ảnh khi rê chuột vào bài viết */
 /* Đảm bảo khung chứa ảnh sẽ cắt phần thừa khi ảnh bị phóng to */
-.thumbnail-container, .post-thumb, a img {
+.thumbnail-container,
+.post-thumb,
+a img {
     overflow: hidden;
 }
 
@@ -307,16 +792,21 @@ img {
 }
 
 /* Khi Hover vào link hoặc thẻ chứa bài viết -> Phóng to ảnh 5% */
-a:hover img, .post-item:hover img {
+a:hover img,
+.post-item:hover img {
     transform: scale(1.05);
 }
 
 /* 5. Hiệu ứng đổi màu Tiêu đề bài viết khi Hover */
-h2 a, h3 a {
+h2 a,
+h3 a {
     transition: color 0.3s ease;
 }
-h2 a:hover, h3 a:hover {
-    color: #b71c1c !important; /* Đổi sang màu đỏ chủ đạo của web */
+
+h2 a:hover,
+h3 a:hover {
+    color: #b71c1c !important;
+    /* Đổi sang màu đỏ chủ đạo của web */
     text-decoration: none;
 }
 
@@ -324,9 +814,12 @@ h2 a:hover, h3 a:hover {
 .widget {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .widget:hover {
-    transform: translateY(-5px); /* Nổi lên trên 5px */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Tăng độ đổ bóng */
+    transform: translateY(-5px);
+    /* Nổi lên trên 5px */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    /* Tăng độ đổ bóng */
 }
 
 /* ================= CSS CHATBOX AI ================= */
@@ -338,7 +831,7 @@ h2 a:hover, h3 a:hover {
     height: 480px;
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     z-index: 9999;
@@ -356,7 +849,8 @@ h2 a:hover, h3 a:hover {
 }
 
 .chatbox-header {
-    background: #b71c1c; /* Màu đỏ chủ đạo */
+    background: #b71c1c;
+    /* Màu đỏ chủ đạo */
     color: #fff;
     padding: 15px 20px;
     border-top-left-radius: 12px;
@@ -368,9 +862,18 @@ h2 a:hover, h3 a:hover {
 }
 
 .chatbox-header button {
-    background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; transition: 0.2s;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
 }
-.chatbox-header button:hover { transform: scale(1.1); color: #ffcccc; }
+
+.chatbox-header button:hover {
+    transform: scale(1.1);
+    color: #ffcccc;
+}
 
 .chatbox-messages {
     flex: 1;
@@ -383,9 +886,30 @@ h2 a:hover, h3 a:hover {
 }
 
 /* Khung tin nhắn */
-.msg { padding: 10px 14px; border-radius: 18px; max-width: 85%; font-size: 0.95rem; line-height: 1.4; }
-.bot-msg { background: #fff; color: #333; align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); border: 1px solid #eee; }
-.user-msg { background: #b71c1c; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+.msg {
+    padding: 10px 14px;
+    border-radius: 18px;
+    max-width: 85%;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.bot-msg {
+    background: #fff;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.user-msg {
+    background: #b71c1c;
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
 
 .chatbox-input {
     display: flex;
@@ -397,11 +921,36 @@ h2 a:hover, h3 a:hover {
 }
 
 .chatbox-input input {
-    flex: 1; padding: 10px 15px; border: 1px solid #ddd; border-radius: 20px; outline: none; background: #f9f9f9; transition: 0.3s;
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    background: #f9f9f9;
+    transition: 0.3s;
 }
-.chatbox-input input:focus { border-color: #b71c1c; background: #fff; }
+
+.chatbox-input input:focus {
+    border-color: #b71c1c;
+    background: #fff;
+}
 
 .chatbox-input button {
-    background: #b71c1c; color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; margin-left: 10px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center;
+    background: #b71c1c;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.chatbox-input button:hover { background: #8f1515; transform: translateY(-2px); }
+
+.chatbox-input button:hover {
+    background: #8f1515;
+    transform: translateY(-2px);
+}

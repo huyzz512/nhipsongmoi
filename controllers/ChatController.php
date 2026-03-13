@@ -1,6 +1,8 @@
 <?php
-class ChatController {
-    public function process() {
+class ChatController
+{
+    public function process()
+    {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             echo json_encode(['reply' => 'Lỗi: Yêu cầu không hợp lệ.']);
             exit;
@@ -19,10 +21,10 @@ class ChatController {
 
 
         $url = 'https://openrouter.ai/api/v1/chat/completions';
-        
+
         $systemInstruction = "Bạn là Trợ lý AI chính thức của tòa soạn báo Nhịp Sống Mới, tên của bạn là Tiêu Tiêu. Nhiệm vụ của bạn là tư vấn, trả lời ngắn gọn, lịch sự, thân thiện bằng tiếng Việt.";
 
-$data = [
+        $data = [
             // Lưu ý tên model
             "model" => "nvidia/nemotron-3-super-120b-a12b:free",
             "messages" => [
@@ -33,11 +35,11 @@ $data = [
 
         $options = [
             'http' => [
-                'header'  => "Content-Type: application/json\r\n" .
-                             "Authorization: Bearer " . $apiKey . "\r\n" .
-                             "HTTP-Referer: http://localhost\r\n" .
-                             "X-Title: Nhịp Sống Mới\r\n",
-                'method'  => 'POST',
+                'header' => "Content-Type: application/json\r\n" .
+                    "Authorization: Bearer " . $apiKey . "\r\n" .
+                    "HTTP-Referer: http://localhost\r\n" .
+                    "X-Title: Nhịp Sống Mới\r\n",
+                'method' => 'POST',
                 'content' => json_encode($data),
                 'ignore_errors' => true
             ],
@@ -47,7 +49,7 @@ $data = [
             ]
         ];
 
-        $context  = stream_context_create($options);
+        $context = stream_context_create($options);
         $response = file_get_contents($url, false, $context);
 
         if ($response === false) {
@@ -56,7 +58,7 @@ $data = [
         }
 
         $result = json_decode($response, true);
-        
+
         if (isset($result['error'])) {
             $error_msg = is_array($result['error']) ? json_encode($result['error']) : $result['error'];
             echo json_encode(['reply' => '<strong style="color:red;">Lỗi API:</strong> ' . $error_msg]);

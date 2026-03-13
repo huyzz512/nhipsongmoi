@@ -3,8 +3,10 @@ require_once __DIR__ . '/../models/PostModel.php';
 require_once __DIR__ . '/../models/CategoryModel.php';
 require_once __DIR__ . '/../models/BannerModel.php';
 
-class PostController {
-    public function index() {
+class PostController
+{
+    public function index()
+    {
         $postModel = new PostModel();
         $catModel = new CategoryModel();
         $bannerModel = new BannerModel();
@@ -55,7 +57,7 @@ class PostController {
         $bannerSidebar = $bannerModel->getBannerByPos('sidebar_right', 10);
 
         // 5. Lấy các tin liên quan (Cùng chuyên mục với bài viết hiện tại)
-        $relatedPosts = $postModel->getPostsByCategory($post['cat_slug'], 4); 
+        $relatedPosts = $postModel->getPostsByCategory($post['cat_slug'], 4);
 
         // 6. Trả dữ liệu ra View
         require __DIR__ . '/../views/post.php';

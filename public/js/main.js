@@ -1,17 +1,17 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const dateElement = document.getElementById("current-date");
     if (dateElement) {
         const today = new Date();
-        const options = { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'numeric', 
-            day: 'numeric' 
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric'
         };
         let formattedDate = today.toLocaleDateString('vi-VN', options);
-        
+
         formattedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-        
+
         dateElement.innerHTML = formattedDate;
     }
 });
@@ -25,7 +25,7 @@ function toggleUserMenu() {
 }
 
 // 3. ĐÓNG MENU KHI CLICK RA NGOÀI VÙNG AVATAR
-window.onclick = function(event) {
+window.onclick = function (event) {
     // Nếu nơi click chuột không phải là .user-area hoặc các thành phần con của nó
     if (!event.target.closest('.user-area')) {
         let dropdowns = document.getElementsByClassName("dropdown-menu");
@@ -45,7 +45,7 @@ const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
 if (scrollToTopBtn) {
     // Sự kiện lắng nghe khi người dùng cuộn chuột
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
         // Nếu cuộn xuống quá 300px thì hiện nút, ngược lại thì ẩn
         if (window.scrollY > 300) {
             scrollToTopBtn.classList.add("show");
@@ -55,7 +55,7 @@ if (scrollToTopBtn) {
     });
 
     // Sự kiện khi click vào nút
-    scrollToTopBtn.addEventListener("click", function() {
+    scrollToTopBtn.addEventListener("click", function () {
         // Cuộn mượt mà (smooth) lên vị trí top: 0
         window.scrollTo({
             top: 0,
@@ -79,7 +79,7 @@ if (localStorage.getItem('darkMode') === 'enabled') {
 if (darkModeBtn) {
     darkModeBtn.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
-        
+
         if (body.classList.contains('dark-mode')) {
             localStorage.setItem('darkMode', 'enabled');
             darkModeBtn.innerHTML = '<i class="fas fa-sun" style="color:#ffeb3b;"></i>'; // Đổi icon thành mặt trời
@@ -98,7 +98,7 @@ const listNewsContainer = document.getElementById('latestNewsContainer');
 let currentOffset = 20; // Bắt đầu từ bài thứ 21 (do đã hiện 20 bài trên web)
 
 if (loadMoreBtn && listNewsContainer) {
-    loadMoreBtn.addEventListener('click', function() {
+    loadMoreBtn.addEventListener('click', function () {
         const originalText = loadMoreBtn.innerHTML;
         loadMoreBtn.innerHTML = 'Đang tải... <i class="fas fa-spinner fa-spin"></i>';
         loadMoreBtn.disabled = true;
@@ -112,7 +112,7 @@ if (loadMoreBtn && listNewsContainer) {
                         // Chèn thêm bài báo mới vào cuối danh sách
                         listNewsContainer.insertAdjacentHTML('beforeend', data.html);
                         currentOffset += 10; // Cập nhật mốc tải tiếp theo
-                        
+
                         loadMoreBtn.innerHTML = originalText;
                         loadMoreBtn.disabled = false;
                     } else {

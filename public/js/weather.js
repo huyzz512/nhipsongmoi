@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Tọa độ địa lý của Hà Nội
     const lat = 21.0285;
     const lon = 105.8542;
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const weather = data.current_weather;
             const temp = Math.round(weather.temperature); // Làm tròn nhiệt độ
             const code = weather.weathercode; // Mã quy định trạng thái thời tiết
-            
+
             let desc = "Trời quang";
             let iconCode = "fa-sun";
             let iconColor = "#f39c12";

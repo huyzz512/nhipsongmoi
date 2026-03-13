@@ -1,16 +1,19 @@
 <?php
 require_once __DIR__ . '/../config/db.php';
 
-class UserModel {
+class UserModel
+{
     private $conn;
 
-    public function __construct() {
+    public function __construct()
+    {
         $db = new Database();
         $this->conn = $db->getConnection();
     }
 
     // 1. Kiểm tra xem Email đã tồn tại chưa
-    public function checkEmailExists($email) {
+    public function checkEmailExists($email)
+    {
         $sql = "SELECT id FROM users WHERE email = :email LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -19,21 +22,23 @@ class UserModel {
     }
 
     // 2. Thêm người dùng mới vào CSDL
-    public function registerUser($username, $email, $password) {
+    public function registerUser($username, $email, $password)
+    {
         // Mã hóa mật khẩu (Rất quan trọng)
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        
+
         $sql = "INSERT INTO users (username, email, password, role) VALUES (:username, :email, :password, 'user')";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':password', $hashed_password, PDO::PARAM_STR);
-        
+
         return $stmt->execute();
     }
 
     // 3. Lấy thông tin user bằng email (Dùng cho đăng nhập)
-    public function getUserByEmail($email) {
+    public function getUserByEmail($email)
+    {
         $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
@@ -42,7 +47,8 @@ class UserModel {
     }
 
     // Cập nhật thông tin Profile
-    public function updateProfile($id, $username, $email, $avatar) {
+    public function updateProfile($id, $username, $email, $avatar)
+    {
         $sql = "UPDATE users SET username = :username, email = :email, avatar = :avatar WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
@@ -52,16 +58,18 @@ class UserModel {
         return $stmt->execute();
     }
     // Lấy thông tin user bằng ID
-    public function getUserById($id) {
+    public function getUserById($id)
+    {
         $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', (int) $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // Lấy danh sách toàn bộ người dùng
-    public function getAllUsers() {
+    public function getAllUsers()
+    {
         $sql = "SELECT id, username, email, role, created_at, avatar FROM users ORDER BY id DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -69,17 +77,19 @@ class UserModel {
     }
 
     // Cập nhật vai trò (Quyền) của người dùng
-    public function updateRole($id, $role) {
+    public function updateRole($id, $role)
+    {
         $sql = "UPDATE users SET role = :role WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
             'role' => $role,
-            'id' => (int)$id
+            'id' => (int) $id
         ]);
     }
 
     // Thêm người dùng mới (Dành cho Admin)
-    public function addUserAdmin($username, $email, $password, $role) {
+    public function addUserAdmin($username, $email, $password, $role)
+    {
         $sql = "INSERT INTO users (username, email, password, role, created_at) VALUES (:user, :email, :pass, :role, NOW())";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
@@ -91,7 +101,8 @@ class UserModel {
     }
 
     // Cập nhật thông tin người dùng (Có thể đổi cả mật khẩu)
-    public function updateUserAdmin($id, $username, $email, $role, $password = '') {
+    public function updateUserAdmin($id, $username, $email, $role, $password = '')
+    {
         if (!empty($password)) {
             // Nếu Admin có nhập mật khẩu mới
             $sql = "UPDATE users SET username = :user, email = :email, role = :role, password = :pass WHERE id = :id";
@@ -106,14 +117,16 @@ class UserModel {
     }
 
     // Xóa người dùng khỏi hệ thống
-    public function deleteUser($id) {
+    public function deleteUser($id)
+    {
         $sql = "DELETE FROM users WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute(['id' => $id]);
     }
 
     // Đếm tổng số người dùng
-    public function countTotalUsers() {
+    public function countTotalUsers()
+    {
         $sql = "SELECT COUNT(*) as total FROM users";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();

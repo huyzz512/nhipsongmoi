@@ -2,9 +2,11 @@
 require_once __DIR__ . '/../models/UserModel.php';
 require_once __DIR__ . '/../models/CategoryModel.php'; // Load menu header
 
-class AuthController {
-    
-    public function login() {
+class AuthController
+{
+
+    public function login()
+    {
         $catModel = new CategoryModel();
         $categories = $catModel->getAllCategories();
         $error = '';
@@ -36,11 +38,12 @@ class AuthController {
                 $error = 'Email hoặc mật khẩu không chính xác!';
             }
         }
-        
+
         require __DIR__ . '/../views/login.php';
     }
 
-    public function register() {
+    public function register()
+    {
         $catModel = new CategoryModel();
         $categories = $catModel->getAllCategories();
         $error = '';
@@ -66,11 +69,12 @@ class AuthController {
                 }
             }
         }
-        
+
         require __DIR__ . '/../views/register.php';
     }
 
-    public function logout() {
+    public function logout()
+    {
         // Xóa tất cả Session
         session_unset();
         session_destroy();
