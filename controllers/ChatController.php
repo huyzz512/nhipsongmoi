@@ -17,7 +17,7 @@ class ChatController
         }
 
         // paste api vào đây
-        $apiKey = '';
+        $apiKey = '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';
 
 
         $url = 'https://openrouter.ai/api/v1/chat/completions';

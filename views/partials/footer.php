@@ -36,7 +36,7 @@
     </div>
     
     <div class="chatbox-messages" id="chatbox-messages">
-        <div class="msg bot-msg">Chào Huy! Tôi là trợ lý AI của tòa soạn. Bạn muốn cập nhật tin tức hay tìm hiểu gì hãy bảo cho mình biết nhé...</div>
+        <div class="msg bot-msg">Chào Huy! Tôi là trợ lý AI của tòa soạn Nhịp Sống Mới. Bạn muốn cập nhật tin tức hay tìm hiểu gì hãy bảo cho mình biết nhé...</div>
     </div>
     
     <div class="chatbox-input">

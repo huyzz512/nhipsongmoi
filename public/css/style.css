@@ -696,6 +696,143 @@ body.dark-mode #loadMoreBtn {
     border-color: #ff5252;
 }
 
+
+/* =========================================
+   GIAO DIỆN TỐI (DARK MODE) CHO CHATBOX AI
+========================================= */
+
+/* 1. Toàn bộ khung chatbox */
+body.dark-mode .chatbox-container {
+    background-color: #242526;
+    border: 1px solid #3a3b3c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+    color: #e4e6eb;
+}
+
+/* 2. Phần Header của Box chat */
+body.dark-mode .chatbox-header {
+    background-color: #18191a; /* Đậm hơn thân chatbox một chút để tạo chiều sâu */
+    border-bottom: 1px solid #3a3b3c;
+}
+
+/* Đổi màu nút X đóng chat */
+body.dark-mode #close-chat {
+    color: #b0b3b8;
+}
+body.dark-mode #close-chat:hover {
+    color: #e4e6eb;
+}
+
+/* 3. Vùng chứa nội dung tin nhắn */
+body.dark-mode .chatbox-messages {
+    background-color: #242526;
+}
+
+/* Bong bóng tin nhắn của AI (Bot) */
+body.dark-mode .bot-msg {
+    background-color: #3a3b3c;
+    color: #e4e6eb;
+}
+
+/* Bong bóng tin nhắn của User 
+   (Giả định khi user chat bạn sẽ gán class .user-msg vào JS) */
+body.dark-mode .user-msg {
+    background-color: #b71c1c; /* Giữ màu đỏ chủ đạo của tòa soạn */
+    color: #ffffff;
+}
+
+/* 4. Khu vực gõ tin nhắn phía dưới */
+body.dark-mode .chatbox-input {
+    background-color: #242526;
+    border-top: 1px solid #3a3b3c;
+}
+
+/* Ô input nhập chữ */
+body.dark-mode #chat-input {
+    background-color: #3a3b3c;
+    color: #e4e6eb;
+    border: 1px solid #555;
+}
+
+/* Màu chữ mờ (placeholder) */
+body.dark-mode #chat-input::placeholder {
+    color: #9aa0a6;
+}
+
+/* Nút Gửi (Paper plane) */
+body.dark-mode #send-chat {
+    color: #b71c1c; 
+    background-color: transparent;
+}
+body.dark-mode #send-chat:hover {
+    color: #e53935; /* Sáng lên một chút khi di chuột vào */
+}
+
+/* =========================================
+   GIAO DIỆN TỐI (DARK MODE) - CHI TIẾT BÀI VIẾT
+========================================= */
+
+/* 1. Phần bên trái (Nội dung bài) */
+body.dark-mode .content-left h1 {
+    color: #e4e6eb !important; /* Đổi màu tiêu đề H1 thành trắng xám */
+}
+
+body.dark-mode .content-left .meta,
+body.dark-mode .content-left .meta span {
+    color: #b0b3b8 !important; /* Đổi màu phần tác giả, ngày tháng, lượt xem */
+    border-bottom-color: #3a3b3c !important; /* Đổi màu đường viền dưới */
+}
+
+body.dark-mode .content-left button {
+    background-color: #3a3b3c !important; /* Đổi nền nút Lưu bài viết */
+    color: #e4e6eb !important;
+}
+body.dark-mode .content-left button:hover {
+    background-color: #4a4b4c !important;
+}
+
+body.dark-mode .content-left p {
+    color: #b0b3b8 !important; /* Đổi màu chữ chú thích ảnh */
+}
+
+body.dark-mode .post-content {
+    color: #e4e6eb !important; /* Đổi màu chữ nội dung bài báo */
+}
+
+/* Ép màu cho mọi thẻ bên trong nội dung (đề phòng nội dung từ Ckeditor sinh ra có dính màu) */
+body.dark-mode .post-content * {
+    color: inherit !important; 
+    background-color: transparent !important; 
+}
+
+
+/* 2. Phần bên phải (Sidebar Đọc nhiều nhất) */
+body.dark-mode .sidebar-right .widget {
+    background-color: #242526 !important;
+    border: 1px solid #3a3b3c !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .sidebar-right .widget-header {
+    border-bottom-color: #3a3b3c !important;
+}
+
+body.dark-mode .sidebar-right .widget-header h3 {
+    color: #e4e6eb !important;
+}
+
+body.dark-mode .sidebar-right .ranking-list a {
+    color: #e4e6eb !important;
+}
+
+body.dark-mode .sidebar-right .ranking-list a:hover {
+    color: #e53935 !important; /* Màu đỏ sáng hơn khi di chuột vào link */
+}
+
+
+
+
+
 /* ==========================================================================
    12. HIỆU ỨNG CHUYỂN MƯỢT MÀ (DÀNH CHO DARK MODE)
    ========================================================================== */
