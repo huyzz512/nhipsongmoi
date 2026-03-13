@@ -2,10 +2,10 @@
         <div class="container footer-grid">
             <div class="ft-col">
                 <h3>Công ty Cổ phần Truyền thông Nhịp Sống Mới</h3>
-                <p>Tổng biên tập: Phan Nhật Huy <br>
-Giấy phép hoạt động báo điện tử Nhịp Sống Mới số 36/GP-BVHTTDL Hà Nội, ngày 10-1-2026<br>
-Địa chỉ tòa soạn: Số 18, ngõ 36, Đường Khuất Duy Tiến, Phường Thanh Xuân, thành phố Hà Nội<br>
-Văn phòng đại diện miền Nam: Số 51-53 Võ Văn Tần, phường Xuân Hòa, thành phố Hồ Chí Minh<br>
+                <p> - Tổng biên tập: Phan Nhật Huy <br>
+ - Giấy phép hoạt động báo điện tử Nhịp Sống Mới số 36/GP-BVHTTDL Hà Nội, ngày 10-1-2026<br>
+ - Địa chỉ tòa soạn: Số 18, ngõ 36, Đường Khuất Duy Tiến, Phường Thanh Xuân, thành phố Hà Nội<br>
+ - Văn phòng đại diện miền Nam: Số 51-53 Võ Văn Tần, phường Xuân Hòa, thành phố Hồ Chí Minh<br>
 <br>
 </p>
             </div>
@@ -16,7 +16,7 @@ Văn phòng đại diện miền Nam: Số 51-53 Võ Văn Tần, phường Xuân
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; Bản quyền thuộc về Báo điện tử Dân trí. Cấm sao chép dưới mọi hình thức nếu không có sự chấp thuận bằng văn bản.</p>
+            <p>&copy; Bản quyền thuộc về Báo điện tử Nhịp Sống Mới. Cấm sao chép dưới mọi hình thức nếu không có sự chấp thuận bằng văn bản.</p>
         </div>
     </footer>
 </html>
